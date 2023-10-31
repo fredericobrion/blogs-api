@@ -6,6 +6,13 @@ const findByEmail = async (email) => {
   return user;
 };
 
+const createUser = async (name, email, password, image = '') => {
+  const user = await User.create({ name, email, password, image });
+
+  return user;
+};
+
 module.exports = {
   findByEmail,
+  createUser,
 };
