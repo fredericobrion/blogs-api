@@ -8,6 +8,15 @@ const create = async (req, res) => {
   return res.status(201).json(category);
 };
 
+const getAllCategories = async (req, res) => {
+  const categories = await service.getAllCategories();
+
+  console.log(categories);
+
+  return res.status(200).json(categories);
+};
+
 module.exports = {
   create,
+  getAllCategories,
 };
