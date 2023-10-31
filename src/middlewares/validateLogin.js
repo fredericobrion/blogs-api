@@ -12,5 +12,7 @@ module.exports = async (req, res, next) => {
     return res.status(400).json({ message: 'Invalid fields' });
   }
 
+  res.locals.user = user.dataValues;
+
   next();
 };
