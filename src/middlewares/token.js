@@ -12,7 +12,7 @@ const validateToken = (req, res, next) => {
   const token = extractToken(bearerToken);
 
   try {
-    const decoded = jwt.verify(token, JWT_SECRET);
+    jwt.verify(token, JWT_SECRET);
 
     return next();
   } catch (err) {
