@@ -3,6 +3,7 @@ const {
   loginRoutes,
   userRoutes,
   categoriesRoutes,
+  postRoutes,
 } = require('./routes');
 
 // ...
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use('/login', loginRoutes);
 app.use('/user', userRoutes);
 app.use('/categories', categoriesRoutes);
+app.use('/post', postRoutes);
 
 // É importante exportar a constante `app`,
 // para que possa ser utilizada pelo arquivo `src/server.js`

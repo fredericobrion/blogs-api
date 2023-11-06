@@ -11,8 +11,6 @@ const create = async (req, res) => {
 const getAllCategories = async (req, res) => {
   const categories = await service.getAllCategories();
 
-  console.log(categories);
-
   return res.status(200).json(categories);
 };
 

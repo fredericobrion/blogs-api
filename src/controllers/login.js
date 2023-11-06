@@ -13,8 +13,6 @@ const generateLoginToken = async (req, res) => {
     expiresIn: '7d',
   });
 
-  console.log(token);
-
   return res.status(200).json({ token });
 };
 

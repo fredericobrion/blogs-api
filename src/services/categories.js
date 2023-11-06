@@ -14,7 +14,16 @@ const getAllCategories = async () => {
   return categories;
 };
 
+const getAllCategoriesIds = async () => {
+  const categories = await Category.findAll();
+
+  const categoriesIds = categories.map(({ id }) => id);
+
+  return categoriesIds;
+};
+
 module.exports = {
   createCategory,
   getAllCategories,
+  getAllCategoriesIds,
 };
