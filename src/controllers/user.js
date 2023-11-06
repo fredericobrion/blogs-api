@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+const Jwt = require('jsonwebtoken');
 const service = require('../services/users');
 
 const { JWT_SECRET } = process.env;
@@ -10,9 +10,10 @@ const createNewUser = async (req, res) => {
 
   const payload = {
     name: user.name,
+    id: user.id,
   };
 
-  const token = jwt.sign(payload, JWT_SECRET, {
+  const token = Jwt.sign(payload, JWT_SECRET, {
     expiresIn: '7d',
   });
 
@@ -35,8 +36,23 @@ const findById = async (req, res) => {
   return res.status(200).json(user);
 };
 
+const extratcToken = (bearerToken) => bearerToken.split(' ')[1];
+
+const deleteUser = async (req, res) => {
+  const token = extratcToken(req.headers.authorization);
+
+  const decoded = Jwt.verify(token, JWT_SECRET);
+
+  const { id } = decoded;
+
+  await service.deleteUser(id);
+
+  return res.status(204).end();
+};
+
 module.exports = {
   createNewUser,
   findAll,
   findById,
+  deleteUser,
 };
