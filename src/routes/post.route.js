@@ -5,7 +5,13 @@ const {
   validatePostChangeBody,
   validateAuthorIdentity,
 } = require('../middlewares/post');
-const { create, getAll, getById, update } = require('../controllers/post');
+const {
+  create,
+  getAll,
+  getById,
+  update,
+  deletePost,
+} = require('../controllers/post');
 
 route.post('/', validateToken, validateNewPost, create);
 route.get('/', validateToken, getAll);
@@ -17,5 +23,6 @@ route.put(
   validateAuthorIdentity,
   update,
 );
+route.delete('/:id', validateToken, validateAuthorIdentity, deletePost);
 
 module.exports = route;

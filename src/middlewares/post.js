@@ -41,6 +41,8 @@ const validateAuthorIdentity = async (req, res, next) => {
   
   const post = await getById(req.params.id);
 
+  if (!post) return res.status(404).json({ message: 'Post does not exist' });
+
   if (post.userId !== decoded.id) {
     return res.status(401).json({ message: 'Unauthorized user' });
   }
