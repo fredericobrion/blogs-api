@@ -11,9 +11,11 @@ const {
   getById,
   update,
   deletePost,
+  searchByQuery,
 } = require('../controllers/post');
 
 route.post('/', validateToken, validateNewPost, create);
+route.get('/search', validateToken, searchByQuery);
 route.get('/', validateToken, getAll);
 route.get('/:id', validateToken, getById);
 route.put(
