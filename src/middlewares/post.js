@@ -1,5 +1,10 @@
-const { createPostSchema } = require('../services/validations/postSchema');
+const Jwt = require('jsonwebtoken');
+
+const { JWT_SECRET } = process.env;
+
+const { createPostSchema, postChangeSchema } = require('../services/validations/postSchema');
 const { getAllCategoriesIds } = require('../services/categories');
+const { getById } = require('../services/post');
 
 const validateNewPost = async (req, res, next) => {
   const { error } = createPostSchema.validate(req.body);
@@ -19,6 +24,32 @@ const validateNewPost = async (req, res, next) => {
   next();
 };
 
+const validatePostChangeBody = async (req, res, next) => {
+  const { error } = postChangeSchema.validate(req.body);
+
+  if (error) return res.status(400).json({ message: 'Some required fields are missing' });
+
+  next();
+};
+
+const extratcToken = (bearerToken) => bearerToken.split(' ')[1];
+
+const validateAuthorIdentity = async (req, res, next) => {
+  const token = extratcToken(req.headers.authorization);
+
+  const decoded = Jwt.verify(token, JWT_SECRET);
+  
+  const post = await getById(req.params.id);
+
+  if (post.userId !== decoded.id) {
+    return res.status(401).json({ message: 'Unauthorized user' });
+  }
+
+  next();
+};
+
 module.exports = {
   validateNewPost,
+  validatePostChangeBody,
+  validateAuthorIdentity,
 };

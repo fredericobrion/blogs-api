@@ -1,9 +1,18 @@
+const Jwt = require('jsonwebtoken');
 const service = require('../services/post');
+
+const { JWT_SECRET } = process.env;
+
+const extratcToken = (bearerToken) => bearerToken.split(' ')[1];
 
 const create = async (req, res) => {
   const { title, content, categoryIds } = req.body;
 
-  const id = 1;
+  const token = extratcToken(req.headers.authorization);
+
+  const decoded = Jwt.verify(token, JWT_SECRET);
+
+  const { id } = decoded;
 
   const newPost = await service.create(title, content, categoryIds, id);
 
@@ -26,8 +35,19 @@ const getById = async (req, res) => {
   return res.status(200).json(post);
 };
 
+const update = async (req, res) => {
+  const { title, content } = req.body;
+
+  const { id } = req.params;
+
+  const updatedPost = await service.update(title, content, id);
+
+  return res.status(200).json(updatedPost);
+};
+
 module.exports = {
   create,
   getAll,
   getById,
+  update,
 };
