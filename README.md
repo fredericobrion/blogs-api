@@ -1,5 +1,5 @@
 # Blogs API
-O projeto é uma API e banco de dados para a produção de conteúdo para um blog!
+O projeto é uma API e um banco de dados produzidos utilizando uma arquitetura em camadas para a geração de conteúdo para um blog!
 
 ## Tecnologias utilizadas
 - <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">JavaScript</a>
