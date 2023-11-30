@@ -37,5 +37,5 @@ npm run dev
 - Endpoint ```/login``` com o método POST.
 - Endpoint ```/user``` com os métodos POST, GET, GET /:id e DELETE.
 - Endpoint ```/categories``` com os métodos POST e GET.
-- Endpoint ```/post``` com os métodos POST, GET, GET /:id, GET /search, PUT e DELETE
+- Endpoint ```/post``` com os métodos POST, GET, GET /:id, GET /search, PUT e DELETE.
 
