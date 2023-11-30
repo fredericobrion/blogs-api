@@ -19,7 +19,7 @@ O projeto é uma API e banco de dados para a produção de conteúdo para um blo
 
 ### Rodando com Docker
 - Verifique se tem o docker-compose instalado na versão 1.29 ou superior.
-- Rode os serviços ```node``` e ```db``` com o comando ```docker-compose up -d build```.
+- Rode os serviços ```node``` e ```db``` com o comando ```docker-compose up -d --build```.
 - Para acessar o terminal do container, use o comando ```docker exec -it blogs_api bash```.
 
 ### Rodando sem Docker
