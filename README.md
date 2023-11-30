@@ -15,7 +15,7 @@ O projeto é uma API e banco de dados para a produção de conteúdo para um blo
   ```
   git clone git@github.com:fredericobrion/blogs-api.git && cd blogs-api
   ```
-- Crie o arquivo ```.env```seguindo o modelo do ```env.example```
+- Crie o arquivo ```.env``` seguindo o modelo do ```env.example```
 
 ### Rodando com Docker
 - Verifique se tem o docker-compose instalado na versão 1.29 ou superior.
