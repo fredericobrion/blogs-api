@@ -15,6 +15,8 @@ O projeto é uma API e banco de dados para a produção de conteúdo para um blo
   ```
   git clone git@github.com:fredericobrion/blogs-api.git && cd blogs-api
   ```
+- Crie o arquivo ```.env```seguindo o modelo do ```env.example```
+
 ### Rodando com Docker
 - Verifique se tem o docker-compose instalado na versão 1.29 ou superior.
 - Rode os serviços ```node``` e ```db``` com o comando ```docker-compose up -d build```.
@@ -26,13 +28,14 @@ O projeto é uma API e banco de dados para a produção de conteúdo para um blo
 ```
 env $(cat .env) npm run dev
 ```
+### Iniciando a aplicação
+Utilize o comando a seguir para iniciar a aplicação em modo de desenvolvimento:
+```
+npm run dev
+```
+## Funcionalidades
+- Endpoint ```/login``` com o método POST.
+- Endpoint ```/user``` com os métodos POST, GET, GET /:id e DELETE.
+- Endpoint ```/categories``` com os métodos POST e GET.
+- Endpoint ```/post``` com os métodos POST, GET, GET /:id, GET /search, PUT e DELETE
 
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
